@@ -1,0 +1,64 @@
+exclude: |
+  (?x)(
+      # Project specific
+      ^engineai_gym/engineai_gym/resources/.*$|
+
+      # Common ignores
+      ^\.venv/.*$|
+      ^venv/.*$|
+      ^node_modules/.*$|
+      ^build/.*$|
+      ^dist/.*$|
+      .*\.pyc$|
+      ^__pycache__/.*$|
+      ^\.git/.*$|
+      ^\.pytest_cache/.*$|
+      ^\.mypy_cache/.*$|
+      (?i)^.*readme\.md$
+  )
+repos:
+  - repo: local
+    hooks:
+      - id: pyupgrade-local
+        name: pyupgrade
+        entry: pyupgrade
+        language: system
+        types: [ python ]
+        args: [ --py37-plus ]
+        stages: [ commit ]
+        require_serial: true
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        args: [
+          '--line-length=88',
+          '--fast'
+        ]
+      - id: black
+        name: black (with stage)
+        stages: [ commit ]
+        args: [ --fast ]
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.0
+    hooks:
+      - id: pyupgrade
+        stages: [ commit ]
+        args: [ --py37-plus ]
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        stages: [ commit ]
+        args: [ '--max-line-length=88', '--ignore=F,E, W503, W504' ]

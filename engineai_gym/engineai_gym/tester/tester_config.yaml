@@ -1,0 +1,50 @@
+testers:
+  tester_normal_commands:
+    loggers:
+      [ logger_type_base_vel,
+        logger_type_position,
+        logger_type_torque,
+        logger_type_vel,
+        logger_type_force ]
+  tester_zero_commands:
+    loggers:
+      [ logger_type_base_vel,
+        logger_type_position,
+        logger_type_torque,
+        logger_type_vel,
+        logger_type_force ]
+  tester_x_commands:
+    loggers:
+      [ logger_type_base_vel,
+        logger_type_position,
+        logger_type_torque,
+        logger_type_vel,
+        logger_type_force ]
+  tester_y_commands:
+    loggers:
+      [ logger_type_base_vel,
+        logger_type_position,
+        logger_type_torque,
+        logger_type_vel,
+        logger_type_force ]
+  tester_yaw_commands:
+    loggers:
+      [ logger_type_base_vel,
+        logger_type_position,
+        logger_type_torque,
+        logger_type_vel,
+        logger_type_force ]
+  tester_forward_commands:
+    loggers:
+      [ logger_type_base_vel,
+        logger_type_position,
+        logger_type_torque,
+        logger_type_vel,
+        logger_type_force ]
+  tester_backward_commands:
+    loggers:
+      [ logger_type_base_vel,
+        logger_type_position,
+        logger_type_torque,
+        logger_type_vel,
+        logger_type_force ]
