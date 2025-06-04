@@ -42,7 +42,7 @@ Our [documentation page](https://dx3a2bminsq.feishu.cn/wiki/BFfwwMaAcisCQ2kyquZc
 - [Development Guide](https://dx3a2bminsq.feishu.cn/wiki/R0JqwPe9miRb0bkSUfKcv40Tnae)
 
 ## Troubleshooting
-Please see the [troubleshooting](https://dx3a2bminsq.feishu.cn/wiki/Yj5Dw9rQWiGXNgkeb2pccQTSnBf) section.
+Please see the [Troubleshooting](https://dx3a2bminsq.feishu.cn/wiki/Yj5Dw9rQWiGXNgkeb2pccQTSnBf) section.
 
 ## Support
 
