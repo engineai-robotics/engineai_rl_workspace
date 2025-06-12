@@ -7,7 +7,6 @@ class ConfigPm01Flat(ConfigPm01Rough):
     class env(ConfigPm01Rough.env):
         obs_list = [
             "base_lin_vel",
-            "pos_phase",
             "dof_pos",
             "dof_vel",
             "actions",
