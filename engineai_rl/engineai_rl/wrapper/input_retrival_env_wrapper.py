@@ -263,7 +263,8 @@ class InputRetrivalEnvWrapper:
                             self.obs_goals_history_deque[obs_type].append(
                                 torch.zeros(
                                     self._env.num_envs,
-                                    self.obs_sizes[obs_type] + self._env.num_goals,
+                                    self.obs_sizes[obs_type]
+                                    + self.goal_sizes[obs_type],
                                     dtype=torch.float,
                                     device=self.device,
                                 )
