@@ -276,6 +276,8 @@ class ConfigLeggedRobot(BaseConfig):
             max_contact_force = 100.0
             min_feet_dist = 0.15
             max_feet_dist = 0.8
+            min_knee_dist = 0.15
+            max_knee_dist = 0.8
             target_feet_height = 0.2
 
     class normalization:

@@ -50,8 +50,8 @@ class RewardsTypeGait(RewardsBase):
             raise RuntimeError("Knees are not specified!")
         knee_pos = self.env.rigid_body_state[:, self.env.knee_indices, :2]
         knee_dist = torch.norm(knee_pos[:, 0, :] - knee_pos[:, 1, :], dim=1)
-        fd = self.env.cfg.rewards.params.min_feet_dist
-        max_df = self.env.cfg.rewards.params.max_feet_dist / 2
+        fd = self.env.cfg.rewards.params.min_knee_dist
+        max_df = self.env.cfg.rewards.params.max_knee_dist / 2
         d_min = torch.clamp(knee_dist - fd, -0.5, 0.0)
         d_max = torch.clamp(knee_dist - max_df, 0, 0.5)
         return (

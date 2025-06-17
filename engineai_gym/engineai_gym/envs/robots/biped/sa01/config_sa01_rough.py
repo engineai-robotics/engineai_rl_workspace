@@ -253,8 +253,6 @@ class ConfigSa01Rough(ConfigBipedRobot):
             max_contact_force = 500.0
             tracking_sigma = 5
             target_joint_pos_scale = 0.26
-            min_feet_dist = 0.15
-            max_feet_dist = 0.8
             target_feet_height = 0.1
             soft_torque_limit_multi = {"joint": 0.9}
 
