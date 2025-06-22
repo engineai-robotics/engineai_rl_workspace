@@ -74,7 +74,7 @@ async def export_policy(args):
                 for network_input_subtype in network_input_type:
                     if isinstance(network_input_subtype, int):
                         input_dim_infos[network_input_name] += network_input_subtype
-                    elif network_input_subtype in network_input_subtype:
+                    elif network_input_subtype in input_sizes:
                         input_dim_infos[network_input_name] += input_sizes[
                             network_input_subtype
                         ]
