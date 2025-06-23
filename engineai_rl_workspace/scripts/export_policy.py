@@ -127,57 +127,51 @@ async def export_policy(args):
                     raise ValueError(
                         f"Network output type {network_output_type} not supported"
                     )
-            if inference_network_cfg.get("normalizer_class_name", False):
-                normalizer_class = eval(
-                    inference_network_cfg.pop("normalizer_class_name")
-                )
-                normalizer = normalizer_class(
-                    **input_dim_infos,
-                    **inference_network_cfg.pop("normalizer_args"),
-                )
-            else:
-                normalizer = None
-            inference_network = inference_network_class(
+        if inference_network_cfg.get("normalizer_class_name", False):
+            normalizer_class = eval(inference_network_cfg.pop("normalizer_class_name"))
+            normalizer = normalizer_class(
                 **input_dim_infos,
-                **output_dim_infos,
-                **inference_network_cfg,
-                normalizer=normalizer,
-            ).to("cpu")
-            inference_network.load_state_dict(
-                loaded_dict["model_state_dict"][inference_network_name]
+                **inference_network_cfg.pop("normalizer_args"),
             )
-            convert_nn_to_onnx(
-                inference_network,
+        else:
+            normalizer = None
+        inference_network = inference_network_class(
+            **input_dim_infos,
+            **output_dim_infos,
+            **inference_network_cfg,
+            normalizer=normalizer,
+        ).to("cpu")
+        inference_network.load_state_dict(
+            loaded_dict["model_state_dict"][inference_network_name]
+        )
+        convert_nn_to_onnx(
+            inference_network,
+            path,
+            args.exp_name + "_" + args.load_run + "_" + inference_network_class_name,
+            input_dim_infos,
+            output_dim_infos,
+        )
+
+        convert_onnx_to_mnn(
+            os.path.join(
                 path,
                 args.exp_name
                 + "_"
                 + args.load_run
                 + "_"
-                + inference_network_class_name,
-                input_dim_infos,
-                output_dim_infos,
-            )
-
-            convert_onnx_to_mnn(
-                os.path.join(
-                    path,
-                    args.exp_name
-                    + "_"
-                    + args.load_run
-                    + "_"
-                    + inference_network_class_name
-                    + ".onnx",
-                ),
-                os.path.join(
-                    path,
-                    args.exp_name
-                    + "_"
-                    + args.load_run
-                    + "_"
-                    + inference_network_class_name
-                    + ".mnn",
-                ),
-            )
+                + inference_network_class_name
+                + ".onnx",
+            ),
+            os.path.join(
+                path,
+                args.exp_name
+                + "_"
+                + args.load_run
+                + "_"
+                + inference_network_class_name
+                + ".mnn",
+            ),
+        )
 
     # 保存配置
     config = {
