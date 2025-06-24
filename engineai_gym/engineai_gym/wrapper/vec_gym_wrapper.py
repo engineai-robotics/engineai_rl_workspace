@@ -134,7 +134,7 @@ class VecGymWrapper:
 
     @property
     def base_ang_vel(self):
-        return self._env.base_lin_vel
+        return self._env.base_ang_vel
 
     @property
     def contact_forces(self):
